@@ -10,6 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as BankRouteImport } from './routes/bank'
+import { Route as CitizenRouteImport } from './routes/citizen'
+import { Route as I4cRouteImport } from './routes/i4c'
 import { Route as TrinityRouteImport } from './routes/trinity'
 import { Route as TrinityIndexRouteImport } from './routes/trinity.index'
 import { Route as TrinityAlertsRouteImport } from './routes/trinity.alerts'
@@ -23,6 +27,26 @@ import { Route as TrinityCasesCaseIdRouteImport } from './routes/trinity.cases.$
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BankRoute = BankRouteImport.update({
+  id: '/bank',
+  path: '/bank',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CitizenRoute = CitizenRouteImport.update({
+  id: '/citizen',
+  path: '/citizen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const I4cRoute = I4cRouteImport.update({
+  id: '/i4c',
+  path: '/i4c',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TrinityRoute = TrinityRouteImport.update({
@@ -73,6 +97,10 @@ const TrinityCasesCaseIdRoute = TrinityCasesCaseIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/bank': typeof BankRoute
+  '/citizen': typeof CitizenRoute
+  '/i4c': typeof I4cRoute
   '/trinity': typeof TrinityRouteWithChildren
   '/trinity/alerts': typeof TrinityAlertsRoute
   '/trinity/audit': typeof TrinityAuditRoute
@@ -85,6 +113,10 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/bank': typeof BankRoute
+  '/citizen': typeof CitizenRoute
+  '/i4c': typeof I4cRoute
   '/trinity/alerts': typeof TrinityAlertsRoute
   '/trinity/audit': typeof TrinityAuditRoute
   '/trinity/heatmap': typeof TrinityHeatmapRoute
@@ -97,6 +129,10 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/bank': typeof BankRoute
+  '/citizen': typeof CitizenRoute
+  '/i4c': typeof I4cRoute
   '/trinity': typeof TrinityRouteWithChildren
   '/trinity/alerts': typeof TrinityAlertsRoute
   '/trinity/audit': typeof TrinityAuditRoute
@@ -111,6 +147,10 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
+    | '/bank'
+    | '/citizen'
+    | '/i4c'
     | '/trinity'
     | '/trinity/alerts'
     | '/trinity/audit'
@@ -123,6 +163,10 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/admin'
+    | '/bank'
+    | '/citizen'
+    | '/i4c'
     | '/trinity/alerts'
     | '/trinity/audit'
     | '/trinity/heatmap'
@@ -134,6 +178,10 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/admin'
+    | '/bank'
+    | '/citizen'
+    | '/i4c'
     | '/trinity'
     | '/trinity/alerts'
     | '/trinity/audit'
@@ -147,6 +195,10 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  BankRoute: typeof BankRoute
+  CitizenRoute: typeof CitizenRoute
+  I4cRoute: typeof I4cRoute
   TrinityRoute: typeof TrinityRouteWithChildren
 }
 
@@ -157,6 +209,34 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bank': {
+      id: '/bank'
+      path: '/bank'
+      fullPath: '/bank'
+      preLoaderRoute: typeof BankRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/citizen': {
+      id: '/citizen'
+      path: '/citizen'
+      fullPath: '/citizen'
+      preLoaderRoute: typeof CitizenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/i4c': {
+      id: '/i4c'
+      path: '/i4c'
+      fullPath: '/i4c'
+      preLoaderRoute: typeof I4cRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/trinity': {
@@ -252,6 +332,10 @@ const TrinityRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  BankRoute: BankRoute,
+  CitizenRoute: CitizenRoute,
+  I4cRoute: I4cRoute,
   TrinityRoute: TrinityRouteWithChildren,
 }
 export const routeTree = rootRouteImport
